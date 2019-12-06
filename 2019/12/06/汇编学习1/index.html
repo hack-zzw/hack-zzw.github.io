@@ -6,13 +6,16 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>Archives | welcome to my Hexo</title>
+  <title>汇编学习1 | welcome to my Hexo</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="welcome to my Hexo">
-<meta property="og:url" content="http:&#x2F;&#x2F;yoursite.com&#x2F;archives&#x2F;index.html">
+  <meta name="description" content="1.机器语言（二进制语言） ​            1.1    机器语言是机器指令的集合 2.汇编语言的产生 3.汇编语言的组成 ​            1、汇编指令（机器码的助记符） ​            2、伪指令（由编译器执行） ​            3、其他符号（由编译器识别） 4.存储器 ​            4.1 CPU是计算机的核心部件，它控制整个计算机的运作并进">
+<meta property="og:type" content="article">
+<meta property="og:title" content="汇编学习1">
+<meta property="og:url" content="http:&#x2F;&#x2F;yoursite.com&#x2F;2019&#x2F;12&#x2F;06&#x2F;%E6%B1%87%E7%BC%96%E5%AD%A6%E4%B9%A01&#x2F;index.html">
 <meta property="og:site_name" content="welcome to my Hexo">
+<meta property="og:description" content="1.机器语言（二进制语言） ​            1.1    机器语言是机器指令的集合 2.汇编语言的产生 3.汇编语言的组成 ​            1、汇编指令（机器码的助记符） ​            2、伪指令（由编译器执行） ​            3、其他符号（由编译器识别） 4.存储器 ​            4.1 CPU是计算机的核心部件，它控制整个计算机的运作并进">
 <meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2019-12-06T11:06:38.411Z">
 <meta name="twitter:card" content="summary">
   
     <link rel="alternative" href="/atom.xml" title="welcome to my Hexo" type="application/atom+xml">
@@ -149,76 +152,203 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
+            <article id="post-汇编学习1" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
   
+    <h1 class="article-title" itemprop="name">
+      汇编学习1
+    </h1>
   
-    
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2019" class="archive-year">2019</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/12/06/%E6%B1%87%E7%BC%96%E5%AD%A6%E4%B9%A01/" class="archive-article-date">
+
+        
+        <a href="/2019/12/06/%E6%B1%87%E7%BC%96%E5%AD%A6%E4%B9%A01/" class="archive-article-date">
   	<time datetime="2019-12-06T11:05:54.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-12-06</time>
 </a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/12/06/%E6%B1%87%E7%BC%96%E5%AD%A6%E4%B9%A01/">汇编学习1</a>
-    </h1>
-  
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>1.机器语言（二进制语言）</p>
+<p>​            1.1    机器语言是机器指令的集合</p>
+<p>2.汇编语言的产生</p>
+<p>3.汇编语言的组成</p>
+<p>​            1、汇编指令（机器码的助记符）</p>
+<p>​            2、伪指令（由编译器执行）</p>
+<p>​            3、其他符号（由编译器识别）</p>
+<p>4.存储器</p>
+<p>​            4.1 CPU是计算机的核心部件，它控制整个计算机的运作并进行运算，想让一个CPU工作就必须向它提供指令和数据。</p>
+<p>​                    —指令告诉CPU怎么运算，数据就是告诉CPU运算什么</p>
+<p>​            指令和数据在存储器中存放，也就是平时说的内存。</p>
+<p>​            4.2 离开了内存，性能再好的CPU也无法工作。</p>
+<p>​            4.3 磁盘不同于内存，磁盘上的数据或程序如果不读到内存中，就无法被CPU使用。</p>
+<p>​                    硬盘—&gt;内存—&gt;CPU</p>
+<p>5.指令和数据</p>
+<p>​            5.1 指令和数据是应用上的概念。</p>
+<p>​            5.2 在内存或磁盘上，指令和数据没有任何区别，都是二进制信息。</p>
+<p>​            5.3 二进制数据</p>
+<p>​                      1000    1001    1101    1000</p>
+<p>​                —&gt;    8          9           D          8        H（数据）</p>
+<p>​                        Hex（H）    十六进制        从1~F        表示：0xff 或 89D8H</p>
+<p>​                        Binary（B）            二进制 </p>
+<p>​                        八进制（Q）    </p>
+<p>6.存储单元（Byte字节）</p>
+<p>​                1 B = 8 bits</p>
+<p>​                1 KB = 1024 B</p>
+<p>​                1 MB =1024 KB</p>
+<p>​                1 GB = 1024 MB</p>
+<p>7.CPU对存储器的读写</p>
+<p>​                CPU想要进行数据的读写，必须和外部器件（标准的说法是芯片）进行三类信息的交互：</p>
+<p>​                        存储单元的地址（地址信息）（硬盘地址、内存地址、显卡显存地址）</p>
+<p>​                        器件的选择，读或写的命令（控制信息）</p>
+<p>​                        读或写的数据（数据信息）</p>
+<p>​                地址总线    传输地址信息</p>
+<p>​                数据总线    传输数据信息</p>
+<p>​                控制总线    传输控制信息</p>
+<p>​            CPU是通过地址总线来指定存储单元。</p>
+<p>​            地址总线上能传送多少个不同的信息，CPU就可以对多少个存储单元进行寻址</p>
+<p>​            CPU        系统        软件程序</p>
+<p>​            64            64                64                =&gt;真正的64位的运算速度</p>
+<p>8.地址总线</p>
+<p>​                一个CPU有N根地址总线，则可以说这个CPU的地址总线宽度为N。</p>
+<p>​                这样的CPU最多可以寻找2^n个内存单元</p>
+<p>9.数据总线</p>
+<p>​                CPU与内存或其他器件之间的数据传送是通过数据总线来进行的。数据总线的宽度决定了CPU和外界的数据传送速度（传输量）。</p>
+<p>10.控制总线</p>
+<p>​                CPU对外部器件的控制是通过控制总线来进行的。在这里控制总线是个总称，控制总线是一些不同控制线的集合。</p>
+<p>​                有多少根控制总线，就意味着CPU提供了对外部期间的多少种控制。</p>
 
-        <div class="article-info info-on-right">
-          
-          
+      
 
+      
+        <div class="page-reward">
+          <a href="javascript:;" target="_blank" rel="noopener" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖果<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" target="_blank" rel="noopener" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" target="_blank" rel="noopener" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" target="_blank" rel="noopener" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" target="_blank" rel="noopener" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" target="_blank" rel="noopener" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" target="_blank" rel="noopener" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" target="_blank" rel="noopener" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" target="_blank" rel="noopener" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" target="_blank" rel="noopener" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
+        </div>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;" target="_blank" rel="noopener"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2019/12/06/%E6%B1%87%E7%BC%96%E5%AD%A6%E4%B9%A01/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/12/05/hello-world/" class="archive-article-date">
-  	<time datetime="2019-12-05T08:12:57.997Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-12-05</time>
-</a>
+<nav id="article-nav">
+  
+  
+    <a href="/2019/12/05/hello-world/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">Hello World</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" target="_blank" rel="noopener" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
         </div>
-    	 
+        
+        
+    </div>
+</aside>
+
+
+
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/12/05/hello-world/">Hello World</a>
-    </h1>
+  
   
 
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-  
-    </div></section>
   
 
-    
+  
+
+  
 
 
           </div>
@@ -241,8 +371,8 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
-		isArchive: true,
+		isPost: true,
+		isArchive: false,
 		isTag: false,
 		isCategory: false,
 		open_in_new: false,

@@ -151,6 +151,116 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-汇编学习1" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/12/06/%E6%B1%87%E7%BC%96%E5%AD%A6%E4%B9%A01/">汇编学习1</a>
+    </h1>
+  
+
+        
+        <a href="/2019/12/06/%E6%B1%87%E7%BC%96%E5%AD%A6%E4%B9%A01/" class="archive-article-date">
+  	<time datetime="2019-12-06T11:05:54.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-12-06</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>1.机器语言（二进制语言）</p>
+<p>​            1.1    机器语言是机器指令的集合</p>
+<p>2.汇编语言的产生</p>
+<p>3.汇编语言的组成</p>
+<p>​            1、汇编指令（机器码的助记符）</p>
+<p>​            2、伪指令（由编译器执行）</p>
+<p>​            3、其他符号（由编译器识别）</p>
+<p>4.存储器</p>
+<p>​            4.1 CPU是计算机的核心部件，它控制整个计算机的运作并进行运算，想让一个CPU工作就必须向它提供指令和数据。</p>
+<p>​                    —指令告诉CPU怎么运算，数据就是告诉CPU运算什么</p>
+<p>​            指令和数据在存储器中存放，也就是平时说的内存。</p>
+<p>​            4.2 离开了内存，性能再好的CPU也无法工作。</p>
+<p>​            4.3 磁盘不同于内存，磁盘上的数据或程序如果不读到内存中，就无法被CPU使用。</p>
+<p>​                    硬盘—&gt;内存—&gt;CPU</p>
+<p>5.指令和数据</p>
+<p>​            5.1 指令和数据是应用上的概念。</p>
+<p>​            5.2 在内存或磁盘上，指令和数据没有任何区别，都是二进制信息。</p>
+<p>​            5.3 二进制数据</p>
+<p>​                      1000    1001    1101    1000</p>
+<p>​                —&gt;    8          9           D          8        H（数据）</p>
+<p>​                        Hex（H）    十六进制        从1~F        表示：0xff 或 89D8H</p>
+<p>​                        Binary（B）            二进制 </p>
+<p>​                        八进制（Q）    </p>
+<p>6.存储单元（Byte字节）</p>
+<p>​                1 B = 8 bits</p>
+<p>​                1 KB = 1024 B</p>
+<p>​                1 MB =1024 KB</p>
+<p>​                1 GB = 1024 MB</p>
+<p>7.CPU对存储器的读写</p>
+<p>​                CPU想要进行数据的读写，必须和外部器件（标准的说法是芯片）进行三类信息的交互：</p>
+<p>​                        存储单元的地址（地址信息）（硬盘地址、内存地址、显卡显存地址）</p>
+<p>​                        器件的选择，读或写的命令（控制信息）</p>
+<p>​                        读或写的数据（数据信息）</p>
+<p>​                地址总线    传输地址信息</p>
+<p>​                数据总线    传输数据信息</p>
+<p>​                控制总线    传输控制信息</p>
+<p>​            CPU是通过地址总线来指定存储单元。</p>
+<p>​            地址总线上能传送多少个不同的信息，CPU就可以对多少个存储单元进行寻址</p>
+<p>​            CPU        系统        软件程序</p>
+<p>​            64            64                64                =&gt;真正的64位的运算速度</p>
+<p>8.地址总线</p>
+<p>​                一个CPU有N根地址总线，则可以说这个CPU的地址总线宽度为N。</p>
+<p>​                这样的CPU最多可以寻找2^n个内存单元</p>
+<p>9.数据总线</p>
+<p>​                CPU与内存或其他器件之间的数据传送是通过数据总线来进行的。数据总线的宽度决定了CPU和外界的数据传送速度（传输量）。</p>
+<p>10.控制总线</p>
+<p>​                CPU对外部器件的控制是通过控制总线来进行的。在这里控制总线是个总称，控制总线是一些不同控制线的集合。</p>
+<p>​                有多少根控制总线，就意味着CPU提供了对外部期间的多少种控制。</p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2019/12/06/%E6%B1%87%E7%BC%96%E5%AD%A6%E4%B9%A01/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" target="_blank" rel="noopener" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-hello-world" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
