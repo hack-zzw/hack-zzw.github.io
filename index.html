@@ -151,6 +151,189 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-汇编学习2" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/12/11/%E6%B1%87%E7%BC%96%E5%AD%A6%E4%B9%A02/">汇编学习2</a>
+    </h1>
+  
+
+        
+        <a href="/2019/12/11/%E6%B1%87%E7%BC%96%E5%AD%A6%E4%B9%A02/" class="archive-article-date">
+  	<time datetime="2019-12-11T01:33:55.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-12-11</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>寄存器（CPU工作原理）<br>    1.CPU概述<br>        1.1 一个典型的CPU由运算器、控制器、寄存器等器件组成，这些器件靠内部总线相连。<br>        1.2 内部总线实现CPU内部各个器件之间的联系。<br>        1.3 外部总线实现CPU和主板上其它器件的联系。</p>
+<pre><code>2.寄存器概述
+    2.1 8086CPU有14个寄存器 它们的名称为：
+        AX、BX、CX、DX、SI、DI、SP、BP、
+        IP、CS、SS、DS、ES、PSW。
+
+    2.2 通用寄存器
+        2.2.1 8086CPU所有的寄存器都是16位的，可以存放两个字节。
+
+        2.2.2 AX、BX、CX、DX 通常用来存放一般性数据被称为通用寄存器。
+
+        2.2.3 8086上一代CPU中的寄存器都是8位的；
+                为保证兼容性，这四个寄存器都可以分为两个独立的8位寄存器使用。
+                AX可以分为AH和AL；
+                BX可以分为BH和BL；
+                CX可以分为CH和CL；
+                DX可以分为DH和DL。
+
+    2.3 字在寄存器中存储
+            word = 2Byte
+
+    2.4 几条汇编指令
+        汇编指令不区分大小写
+            AX = 8226H        BX = 8226H
+            ADD AX,BX        =&gt;  AX=AX+BX
+                                1044C H= 8226H+8226H      AX=044C (溢出部分舍弃)
+        注：AL的溢出不会进入AH中
+
+    2.6 物理地址
+        CPU访问内存单元时要给出内存单元的地址。
+        所有的内存单元构成的存储空间是一个一维的线性空间。</code></pre><p>　            每一个内存单元在这个空间中都有唯一的地址，这个唯一的地址称为物理地址。</p>
+<pre><code>2.7 16位结构的CPU
+    概括的讲，16位结构描述了一个CPU具有以下几个方面特征：
+        -运算器一次最多可以处理16位的数据。
+        -寄存器的最大宽度为16位。
+        -寄存器和运算器之间的通路是16位的。
+
+2.8 8086CPU给出物理地址的方法
+    2.8.1 8086有20位地址总线，可传送20位地址，寻址能力为1M。
+
+    2.8.2 8086内部为16位结构，它只能传送16位的地址，表现出的寻址能力却只有64K。
+
+    2.8.3 8086CPU采用一种在内部用两个16位地址合成的方法来形成一个20位的物理地址。
+
+    2.8.4 地址加法器合成物理地址的方法：
+            物理地址=段地址×16+偏移地址
+
+    2.8.5 由段地址×16引发的讨论
+        （1）一个数据的二进制形式左移1位，相当于该数据乘以2；
+        （2）一个数据的二进制形式左移N位，相当于该数据乘以2的N次方；
+        （3）地址加法器如何完成段地址×16的运算？
+                 以二进制形式存放的段地址左移4位。
+            16进制左移一位
+2.9 段的概念
+    错误认识：
+        内存被划分成了一个一个的段，每一个段有一个段地址。
+    其实：
+        内存并没有分段，段的划分来自于CPU，
+        由于8086CPU用“（段地址×16）+偏移地址=物理地址”的方式给出内存单元的物理地址，
+        使得我们可以用分段的方式来管理内存。
+
+    以后，在编程时可以根据需要，将若干地址连续的内存单元看作一个段，
+    用段地址×16定位段的起始地址（基础地址），用偏移地址定位段中的内存单元。
+
+    两点需要注意：
+    （1）段地址×16 必然是 16的倍数，所以一个段的起始地址也一定是16的倍数；
+    （2）偏移地址为16位，16 位地址的寻址能力为 64K，所以一个段的长度最大为64K。
+
+2.10 段寄存器
+     2.10.1 段寄存器就是提供段地址的。
+            8086CPU有4个段寄存器：
+            CS、DS、SS、ES
+            code segment    data segment
+            stack segment    extract segment
+            当8086CPU要访问内存时，由这4个段寄存器提供内存单元的段地址。
+
+2.11 CS和IP寄存器（8086都是16位的）
+    CS和IP是8086CPU中最关键的寄存器，它们指示了CPU当前要读取指令的地址。
+
+    CS为代码段寄存器；
+    IP为指令指针寄存器。
+
+2.12 8086PC工作过程
+    （1）从CS:IP指向内存单元读取指令，读取的指令进入指令缓冲器；
+    （2）IP = IP + 所读取指令的长度，从而指向下一条指令；
+    （3）执行指令。 转到步骤 （1），重复这个过程。
+
+    在 8086CPU 加电启动或复位后（ 即 CPU刚开始工作时）CS和IP被设置为CS=FFFFH，IP=0000H，
+    即在8086PC机刚启动时，CPU从内存FFFF0H单元中读取指令执行，
+    FFFF0H单元中的指令是8086PC机开机后执行的第一条指令。
+
+        CPU根据什么将内存中的信息看作指令？
+       CPU将CS:IP指向的内存单元中的内容看作指令。
+
+2.13 修改CS、IP的指令
+    在CPU中，程序员能够用指令读写的部件只有寄存器，程序员可以通过改变寄存器中的内容实现对CPU的控制。
+    CPU从何处执行指令是由CS、IP中的内容决定的，程序员可以通过改变CS、IP中的内容来控制CPU执行目标指令。
+
+    我们如何改变CS、IP的值呢？
+        同时修改CS、IP的内容：
+        jmp 段地址：偏移地址
+            jmp 2AE3:3
+            jmp 3:0B16
+        功能：用指令中给出的段地址修改CS，偏移地址修改IP。
+
+        仅修改IP的内容：
+            jmp 某一合法寄存器
+                jmp ax   （类似于 mov IP,ax）
+                jmp bx
+            功能：用寄存器中的值修改IP。
+2.14 代码段
+    对于8086PC机，在编程时，可以根据需要，
+    将一组内存单元定义为一个段。
+    可以将长度为 N（ N≤64KB ）的一组代码，
+    存在一组地址连续、起始地址为 16的倍数的内存单元中，
+    这段内存是用来存放代码的，从而定义了一个代码段。
+
+    如何使得代码段中的指令被执行呢？
+    将一段内存当作代码段，仅仅是我们在编程时的一种安排，CPU 并不会由于这种安排，就自动地将我们定义得代码段中的指令当作指令来执行。
+    CPU 只认被 CS:IP 指向的内存单元中的内容为指令。
+    所以要将CS:IP指向所定义的代码段中的第一条指令的首地址。
+    CS = 123BH，IP = 0000H。</code></pre>
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2019/12/11/%E6%B1%87%E7%BC%96%E5%AD%A6%E4%B9%A02/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" target="_blank" rel="noopener" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-OD使用教程2" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
